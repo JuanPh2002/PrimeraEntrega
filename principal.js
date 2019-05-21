@@ -7,4 +7,3 @@ const argv = require ('yargs')
     .argv;
     
 
-    crearArchivo(argv.n,argv.ced,cursos.buscarCurso(argv.c));
