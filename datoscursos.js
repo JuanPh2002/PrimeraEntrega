@@ -20,18 +20,31 @@ let cursos =
     }
 ];
 
-let buscarCurso = (idCurso) => cursos.find( curso => curso.idCurso == idCurso);
+let buscarCurso = (idCurso) => cursos.find(curso => curso.idCurso == idCurso);
 
-for (let i=0; i<cursos.length; i++) {
-    setTimeout(function()  {
-        console.log ('El nombre del curso es: ' + cursos[i].nombre);
-        console.log ('El Id del curso es: ' +  cursos[i].idCurso);
-        console.log ('La duracion del curso es: ' + cursos[i].duracionHoras + ' Horas');
-        console.log ('El valor del curso es: ' +  cursos[i].valor);+
-        console.log('----------------------');
-    }, i * 2000);
+function descripcionCursos ()  {
+	for (let i=0; i<cursos.length; i++) {
+        setTimeout(function()  {
+            console.log ('El nombre del curso es: ' + cursos[i].nombre + '\n' +
+            ' su Id es: ' +  cursos[i].idCurso + '\n' +
+            ' la duracion en horas es: ' + cursos[i].duracionHoras + '\n' +
+            ' el valor del curso es: ' +  cursos[i].valor)
+            console.log('----------------------');
+        }, i * 2000);
+    }		   
+}
+
+function describirCurso(curso) {
+    console.log('\n' +
+                'El curso es ' + curso.nombre + '\n' +
+                ' su Id es ' + curso.idCurso + '\n' +
+                ' la duracion en horas es ' + curso.duracionHoras + '\n' +
+                ' y su valor es de ' + curso.valor + '\n');
 }
 
 module.exports = {
-	buscarCurso
+    cursos,
+    buscarCurso,
+    descripcionCursos,
+    describirCurso
 };
