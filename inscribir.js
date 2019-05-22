@@ -1,6 +1,6 @@
 const fs = require ('fs');
 
-const opciones = {
+let opciones = {
     idCurso:{
         demand: true,
         alias: 'i'
@@ -15,20 +15,24 @@ const opciones = {
     }
 };
 
-let crearArchivo = (nombre, cedula, idCurso) => {
+let crearArchivo = (nombre, cedula, curso) => {
     texto = 'El Señor ' + nombre + '\n' +
-            ' con cédula Nro ' + cedula  
-            ' esta interesado en inscribirse al curso con id ' + idCurso;
+            ' con cédula Nro ' + cedula + '\n' +
+            ' esta interesado en inscribirse al curso ' + curso.nombre + '\n' +
+            ' con id ' + curso.idCurso ;
             
-    fs.writeFile('Inscrito' + cedula + '.txt',texto,(err) => {
+    fs.writeFile('Aspirante-' + nombre + '.txt',texto,(err) => {
         if (err) throw (err);
-        console.log('¡La informacion del aspirante ha sido guardada exitosamente!')
+        console.log('¡La informacion del aspirante ha sido guardada exitosamente!');
     });
 }
 
-
+function cursoErroneo() {
+    console.log('El id que ingreso no pertenece a ninguno de nuestros cursos actuales. Ingrese uno nuevamente.'+ '\n')
+}
 
 module.exports = {
     crearArchivo,
-    opciones
+    opciones,
+    cursoErroneo
 };
